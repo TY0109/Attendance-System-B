@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user,only:[:show,:edit,:update,:destroy]
   
   def index
-    @user=User.pagenate(page:params[:page],per_page:30)
+    @users=User.paginate(page:params[:page],per_page:30)
   end
     
   def show
