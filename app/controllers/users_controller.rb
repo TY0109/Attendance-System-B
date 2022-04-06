@@ -43,6 +43,18 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
+  
+  #以下、基本情報系＃
+  def edit_basic_info
+  end
+  
+  
+  def update_basic_info
+  end
+  
+  
+  
+  
   private
   
     def user_params
@@ -51,3 +63,5 @@ class UsersController < ApplicationController
     
 
 end
+
+
