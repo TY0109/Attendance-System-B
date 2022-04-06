@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220405183407) do
+ActiveRecord::Schema.define(version: 20220406072222) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20220405183407) do
     t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "remember_digest"
+    t.index ["name"], name: "index_users_on_name"
   end
 
 end

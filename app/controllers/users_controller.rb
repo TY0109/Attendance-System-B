@@ -18,7 +18,7 @@ class UsersController < ApplicationController
    if @user.save
      log_in @user
      flash[:success]='新規作成に成功しました。'
-     redirect_to user  # タスク管理では、@userとしていたが、userでいけるのでは？
+     redirect_to @user 
    else
      render :new
    end
