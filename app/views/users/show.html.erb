@@ -1,2 +1,23 @@
 <% provide(:title,@user.name) %>
-<h1>ユーザー情報</h1>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2" >
+    <table class="table table-hover" id="user-table" >
+      <tbody>
+        <tr>
+          <td>時間管理表</td>
+          <td>指定勤務時間</td>
+          <td>基本時間</td>
+          <td>初日</td>
+        </tr>
+        <tr>
+          <td>所属 <%= @user.department? ? @user.department : "未所属" %></td>
+          <td>氏名</td>
+          <td>コード</td>
+          <td></td>
+          <td>出勤日数</td>
+          <td>締め</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

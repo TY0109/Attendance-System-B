@@ -8,12 +8,12 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks',   '~> 5'
 gem 'jbuilder',     '~> 2.5'
-gem 'bootstrap-sass'.         
-gem 'will_paginate'　　　　　　 
-gem 'bootstrap-will_paginate'　 
-gem 'faker'　　　　　　　　　　　#サンプルユーザーを量産可能に
-gem 'rails-i18n'.    　　　　　　#日本語化や日時に関する設定
-gem 'bcrypt'　　　　　　　　　　 #パスワードのダイジェスト化を可能に
+gem 'bootstrap-sass'       
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+gem 'faker'
+gem 'bcrypt'
+gem 'rails-i18n'
 
 
 group :development, :test do
