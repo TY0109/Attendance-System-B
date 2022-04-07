@@ -13,7 +13,7 @@
       <tbody>
         <% @users.each do |user| %>
         <tr>
-          <td><%=link_to user.name ,user %><span>|</span><%=link_to "削除", user_path(user), method: :delete %></td>
+          <td><%=link_to user.name ,user %><span>|</span><%=link_to "削除", user_path(user), method: :delete ,data:{confirm: "#{user.name}を削除します。よろしいですか？"} %></td>
         </tr>
         <% end %>
       </tbody>

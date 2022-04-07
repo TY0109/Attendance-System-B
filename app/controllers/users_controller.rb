@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user,only:[:show,:edit,:update,:destroy,:edit_basic_info, :update_basic_info]
+  before_action :set_user,only:[:show,:edit,:update,:destroy,:edit_basic_info]
   
   def index
     @users=User.paginate(page:params[:page],per_page:30)
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash[:danger]="#{@user.name}を削除します。"
+    flash[:danger]="#{@user.name}を削除しました。"
     redirect_to users_url
   end
   
@@ -55,8 +55,7 @@ class UsersController < ApplicationController
         if user.update_attributes(basic_info_params)
           flash[:success]="全員の基本情報を更新しました。"
         else
-          flash[:dabger]="更新は失敗しました。<br>"+
-          @user.errors.full_messages.join("<br>")
+          flash[:danger]="更新は失敗しました。<br>" + user.errors.full_messages.join("<br>")
         end
       end
       redirect_to users_url
