@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   before_action :set_user,only:[:show,:edit,:update,:destroy,:edit_basic_info]
+  before_action :set_one_month,only: :show
   
   def index
     @users=User.paginate(page:params[:page],per_page:30)
   end
     
   def show
-    @first_day=Date.current.beginning_of_month
-    @last_day=@first_day.end_of_month
+    
   end
     
   def new
