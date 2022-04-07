@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user,only:[:show,:edit,:update,:destroy]
+  before_action :set_user,only:[:show,:edit,:update,:destroy,:edit_basic_info, :update_basic_info]
   
   def index
     @users=User.paginate(page:params[:page],per_page:30)
@@ -50,6 +50,16 @@ class UsersController < ApplicationController
   
   
   def update_basic_info
+    @users=User.all
+      @users.each do |user|
+        if user.update_attributes(basic_info_params)
+          flash[:success]="全員の基本情報を更新しました。"
+        else
+          flash[:dabger]="更新は失敗しました。<br>"+
+          @user.errors.full_messages.join("<br>")
+        end
+      end
+      redirect_to users_url
   end
   
   
@@ -61,6 +71,10 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name,:email, :password,:password_confirmation, :department)
     end
     
+    
+    def basic_info_params
+      params.require(:user).permit(:basic_time, :work_time)
+    end
 
 end
 
