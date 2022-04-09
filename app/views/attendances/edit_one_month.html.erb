@@ -1,4 +1,4 @@
-<% provide(:title,@suer.name) %>  <%# 編集元が、userモデルのshowファイルにあるので、データの送信先は@user #%>
+<% provide(:title,@user.name) %>  <%# 編集元が、userモデルのshowファイルにあるので、データの送信先は@user #%>
 <%=form_with(model:@user, url:attendances_update_one_month_user_path(date:@first_day), method: :patch,  local:true) do |f| %>
   <table class="table table-bordered ">
     <thead>
@@ -12,28 +12,38 @@
         <td>残業指示</td>
         <td>指示者</td>
       </tr>
-    </head>
+    </thead>
     <tbody>
-      <% @attendances.each do |day| %>
+    <% @attendances.each do |day| %>
       <%=f.fields_for "attendances[]", day do |attendance| %>
       <tr>
         <td><%=l(day.worked_on, format: :short) %></td>
         <td><%=$days_of_the_week[day.worked_on.wday] %></td>
-        <td><%=attendance.time_field: started_at, class:"form-control" %></td>
-        <td><%=attendance.time_field: finished_at, class:"form-control" %></td>
+        <% if !current_user.admin? && (Date.current<day.worked_on) %>
+          <td><%=attendance.time_field:started_at, class:"form-control" ,readonly:true %></td>
+          <td><%=attendance.time_field:finished_at, class:"form-control" ,readonly:true %></td>
+        <% else %>
+          <td><%=attendance.time_field:started_at, class:"form-control" %></td>
+          <td><%=attendance.time_field:finished_at, class:"form-control" %></td>
+        <% end %>
         <td>
           <% if day.started_at.present? && day.finished_at.present? %>
             <%= working_times(day.started_at,day.finished_at) %>
           <% end %>
         </td>
-        <td><%=attendance.text_field: note, class:"form-control" %></td>
+        <td><%=attendance.text_field:note, class:"form-control" %></td>
         <td></td>
         <td></td>
       </tr>
       <% end %>
-      <% end %>
+    <% end %>
     </tbody>
   </table>
+  
+  <div class="center">
+    <%= f.submit "まとめて更新",class: "btn btn-lg btn-primary" %>
+    <%= link_to "キャンセル", user_path(date:@first_day), class: "btn btn-lg btn-default" %>
+  </div>
 <% end %>
 
 
