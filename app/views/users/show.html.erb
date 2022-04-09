@@ -18,6 +18,11 @@
         </tr>
       </tbody>
     </table>
+    
+    <div class="btn-wrapper" %>
+      <%= link_to "勤怠を編集",attendances_edit_one_month_user_path(date:@first_day), class: "btn btn-default btn-edit-one-month" %>
+    </div>
+    
     <table class="table table-bordered table-striped" id="user-attendance-table" >  <%# table-striped　はtheadには反映されていない？#%>
       <thead>
         <tr>
