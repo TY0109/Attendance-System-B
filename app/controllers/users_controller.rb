@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user,only:[:show,:edit,:update,:destroy,:edit_basic_info]
+  before_action :set_user,only:[:show,:edit,:update,:destroy,:edit_basic_info,:update_basic_info]
   before_action :set_one_month,only: :show
   
   def index

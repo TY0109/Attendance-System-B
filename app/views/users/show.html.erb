@@ -1,5 +1,4 @@
 <% provide(:title,@user.name) %>
-<div class="row">
     <table class="table table-bordered" id="user-info-table" >  <%# col-md　書いていない#%>
       <tbody>
         <tr>
@@ -13,7 +12,7 @@
           <td>氏名</td>
           <td>コード</td>
           <td></td>
-          <td>出勤日数 <%=@worked_sum %>日</td> <%#　入力した文字によって、幅は自動調節してくれるので先に文字を入れてしまおう。#%>
+          <td>出勤日数 <%=@worked_sum %>日</td> <%#　入力した文字によって、セルの幅は自動調節してくれるので先に文字を入れてしまおう。#%>
           <td>締め <%= l(@last_day, format: :short) %></td>
         </tr>
       </tbody>
