@@ -12,7 +12,7 @@
           <td style="width:22%">氏名  <%= @user.name %></td>
           <td style="width:5%">コード</td>
           <td style="width:1%"></td>
-          <td style="width:14%">出勤日数  <%=@worked_sum %>日</td> <%#　入力した文字によって、セルの幅は自動調節してくれるので先に文字を入れてしまおう。#%>
+          <td style="width:14%">出勤日数  <%=@worked_sum %>日</td> <%#　入力した文字によって、セルの幅は自動調節してくれるので先に文字を入れてしまおう。その後、widthで微調整 #%>
           <td style="width:13%">締め  <%= l(@last_day, format: :short) %></td>
         </tr>
       </tbody>
