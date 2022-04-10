@@ -2,26 +2,51 @@
   td{
     text-align:center;
     vertical-align:bottom;
+    white-space:pre;
   }
+  
+  .time-board-title{
+    margin-left:20px;
+    margin-right:20px;
 }
+
+
+
+ .btn-change{
+  padding-left:10px;
+  padding-right:10px;
+  margin-right:0px;
+}
+
+}
+
 
 #user-attendance-table{
   th{
     text-align:center;
   }
+  
+  td{
+    text-align:center;
+  }
+  
+  
+  
+  .btn-register{
+  padding-left:50px;
+  padding-right:50px
+}
+
 }
 
 
-.time-board{
-  margin-left:20px;
-  margin-right:20px;
-}
 
-.btn-change{
-  padding-left:10px;
-  padding-right:10px;
-}
+
 
 .btn-edit-one-month{
   margin-bottom:-25px;
 }
+
+
+
+

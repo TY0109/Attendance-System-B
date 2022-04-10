@@ -1,6 +1,6 @@
 <% provide(:title,@user.name) %>  <%# 編集元が、userモデルのshowファイルにあるので、データの送信先は@user #%>
 <%=form_with(model:@user, url:attendances_update_one_month_user_path(date:@first_day), method: :patch,  local:true) do |f| %>
-  <table class="table table-bordered ">
+  <table class="table table-bordered " id="user-edit-attendance-table">
     <thead>
       <tr>
         <td>日付</td>
@@ -19,7 +19,7 @@
       <tr>
         <td><%=l(day.worked_on, format: :short) %></td>
         <td><%=$days_of_the_week[day.worked_on.wday] %></td>
-        <% if !current_user.admin? && (Date.current<day.worked_on) %>
+        <% if  (Date.current<day.worked_on) %>
           <td><%=attendance.time_field:started_at, class:"form-control" ,readonly:true %></td>
           <td><%=attendance.time_field:finished_at, class:"form-control" ,readonly:true %></td>
         <% else %>
@@ -40,9 +40,9 @@
     </tbody>
   </table>
   
-  <div class="center">
-    <%= f.submit "まとめて更新",class: "btn btn-lg btn-primary" %>
-    <%= link_to "キャンセル", user_path(date:@first_day), class: "btn btn-lg btn-default" %>
+  <div class="edit-attendance-btn">
+    <%= link_to "キャンセル", user_path(date:@first_day), class: "btn btn-lg btn-default btn-cancel" %>
+    <%= f.submit "編集を保存する",class: "btn btn-lg btn-primary btn-preserve" %>
   </div>
 <% end %>
 

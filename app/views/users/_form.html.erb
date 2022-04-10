@@ -7,14 +7,15 @@
   <%=f.label :email ,class: "label-#{yield(:class_text)} label-form"%>
   <%=f.email_field :email ,class:"form-control" %>
   
+  <%=f.label :department, class:"label-#{yield(:class_text)} label-form" %>
+  <%=f.text_field :department, class:"form-control" %>
+  
   <%=f.label :password, class:"label-#{yield(:class_text)} label-form" %>
   <%=f.password_field :password, class:"form-control"%>
   
   <%=f.label :password_confirmation, class:"label-#{yield(:class_text)} label-form" %>
   <%=f.password_field :password_confirmation, class:"form-control" %>
   
-  <%=f.label :department, class:"label-#{yield(:class_text)} label-form" %>
-  <%=f.text_field :department, class:"form-control" %>
   
   <%=f.submit yield(:button_text), class:"btn btn-primary btn-block btn-#{yield(:class_text)} btn-form" %>
 <% end %>
