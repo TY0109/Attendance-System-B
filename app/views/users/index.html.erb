@@ -1,7 +1,7 @@
 <% provide(:title,"Users") %>
 <h1>利用者一覧</h1>
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-7">
     <table class="table table-hover" id="users-table">
     <%=will_paginate %>
       <thead>
@@ -17,9 +17,15 @@
         </tr>
         <% end %>
       </tbody>
-      
-       
     </table>
     <%=will_paginate %> 
+  </div>
+  
+  <div class="col-md-4">
+    <%= form_with(model:@user, url:users_path, method: :get, local:true) do |f| %>
+      <p>ユーザー名を検索</P>
+      <%=f.text_field:search, id:"search-form"%>
+      <%=f.submit "検索", class:"btn btn-primary btn-sm btn-search" %>
+    <% end %>
   </div>
 </div>
