@@ -68,7 +68,8 @@
             <td></td>
             <td>
               <% if day.started_at.present? && day.finished_at.present? %>
-                <%= working_times(day.started_at,day.finished_at) %>  <%# 引数を渡し、メソッドを呼び出し#%>
+                <%=str_times=working_times(day.started_at,day.finished_at) %> 
+                <% @total_working_times = @total_working_times.to_f + str_times.to_f %>
               <% end %>
             </td>
             <td><%= day.note %></td>
@@ -76,6 +77,14 @@
             <td><%= day.overwork_director %></td>
           </tr>
         <% end %>
+        <tr>
+          <td colspan="2"><%=format_basic_info(@user.work_time).to_f*@worked_sum %></td>
+          <td></td>
+          <td colspan="6"><%=format("%.2f", @total_working_times.to_f) %></td>
+          <td></td>
+          <td></td>
+          <td>所属長承認</td>
+        </tr>
       </tbody>
     </table>
 </div>
