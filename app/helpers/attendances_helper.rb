@@ -12,5 +12,19 @@ module AttendancesHelper
     format("%.2f", ((finish-start)/60)/60.0)
   end
   
+  def attendances_invalid?
+    attendances=true
+    attendances_params.each do |id,item|
+     if item[:started_at].blank? && item[:finished_at].blank?
+       next
+     elsif item[:started_at].present? && item[:finished_at].present?
+       next
+     elsif item[:started_at].blank? || item[:finshed_at].blank?
+       attendances=false
+       break
+     end
+    end
+    return attendances
+  end
 
 end
