@@ -3,8 +3,8 @@
       <tbody>
         <tr>
           <td><%= link_to "←",user_path(date:@first_day.prev_month), class: "btn btn-primary btn-change" %><span class="time-board-title"><%= l(@first_day, format: :middle)%> 時間管理表</span><%= link_to "→",user_path(date:@first_day.next_month), class: "btn btn-primary btn-change" %></td>
-          <td>指定時間  <%= format_basic_info(@user.basic_time) %></td>   <%# 月切り替えボタンの追加により、縦幅が拡大するため、隣のセルのvertical中央の基準が変化する。#%>
-          <td colspan="3"><%= format_basic_info(@user.work_time) %>  基本時間</td> <%#　セルの幅の指定より先に結合を考える #%> 
+          <td>指定時間  <%= format_basic_info(@user.work_time) %> </td>   <%# 月切り替えボタンの追加により、縦幅が拡大するため、隣のセルのvertical中央の基準が変化する。#%>
+          <td colspan="3"><%= format_basic_info(@user.basic_time) %>  基本時間</td>　　　<%#　セルの幅の指定より先に結合を考える #%> 
           <td>初日  <%= l(@first_day, format: :short)%></td>
         </tr>
         <tr>
@@ -14,8 +14,7 @@
           <td style="width:1%"></td>
           <td style="width:14%">出勤日数  <%=@worked_sum %>日</td> <%#　入力した文字によって、セルの幅は自動調節してくれるので先に文字を入れてしまおう。その後、widthで微調整 #%>
           <td style="width:13%">締め  <%= l(@last_day, format: :short) %></td>
-        </tr>
-      </tbody>
+        </tr>　　
     </table>
     
     <div class="btn-wrapper" %>
@@ -68,7 +67,7 @@
             <td></td>
             <td>
               <% if day.started_at.present? && day.finished_at.present? %>
-                <%=str_times=working_times(day.started_at,day.finished_at) %> 
+                <%=str_times=working_times(day.started_at.floor_to(15.minutes),day.finished_at.floor_to(15.minutes)) %> 
                 <% @total_working_times = @total_working_times.to_f + str_times.to_f %>
               <% end %>
             </td>

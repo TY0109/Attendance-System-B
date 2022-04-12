@@ -6,11 +6,11 @@
     <%= form_with(model:@user, url:update_basic_info_user_path(current_user),method: :patch, local:true) do |f| %>
       <%= render 'shared/error_messages', object:@user %>
       
-        <%= f.label :basic_time, class: "label-form" %>
-        <%= f.time_field :basic_time , class: "form-control" %>
-        
         <%= f.label :work_time, class: "label-form" %>
-        <%= f.time_field :work_time, class: "form-control" %>
+        <%= f.time_field :work_time , class: "form-control" %>
+        
+        <%= f.label :basic_time, class: "label-form" %>
+        <%= f.time_field :basic_time, class: "form-control" %>
         
         <%= f.submit "編集", class:"btn btn-block btn-primary btn-form" %>
     <% end %>
