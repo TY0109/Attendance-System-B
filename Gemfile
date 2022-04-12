@@ -14,6 +14,7 @@ gem 'bootstrap-will_paginate'
 gem 'faker'
 gem 'bcrypt'
 gem 'rails-i18n'
+gem 'rounding'
 
 
 group :development, :test do
